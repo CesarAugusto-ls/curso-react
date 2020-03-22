@@ -4,9 +4,9 @@ function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <a className="navbar-brand" href="#">Produtos</a>
-            <button 
-                className="navbar-toggler" 
-                type="button" data-toggle="collapse"
+            <button className="navbar-toggler collapsed" 
+                type="button"
+                data-toggle="collapse"
                 data-target="#navbarColor01" 
                 aria-controls="navbarColor01" 
                 aria-expanded="false" 
