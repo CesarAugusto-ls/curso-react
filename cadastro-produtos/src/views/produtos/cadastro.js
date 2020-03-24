@@ -113,7 +113,7 @@ class CadastroProduto extends React.Component {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <label>Descrição *</label>
+                                <label>Descrição </label>
                                 <textarea
                                     name="descricao"
                                     value={this.state.descricao}
