@@ -11,7 +11,7 @@ export default class ConsultaProdutos extends React.Component {
         super()
         this.service = new ProdutoService()
     }
-
+ 
     componentDidMount() {
         const produtos = this.service.consultarProdutos()
         this.setState({ produtos })

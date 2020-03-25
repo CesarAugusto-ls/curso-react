@@ -46,4 +46,5 @@ export default class ProdutoService {
         const produtos = localStorage.getItem(PRODUTOS)
         return JSON.parse(produtos)
     }
+    
 }
