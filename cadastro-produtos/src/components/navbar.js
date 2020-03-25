@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <Link className="navbar-brand" href="/">Produtos</Link>
+            <Link className="navbar-brand" to="/">Produtos</Link>
             <button className="navbar-toggler collapsed" 
                 type="button"
                 data-toggle="collapse"

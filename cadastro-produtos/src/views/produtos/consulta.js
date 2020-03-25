@@ -23,7 +23,7 @@ export default class ConsultaProdutos extends React.Component {
                 <div className="card-header">
                     Consulta produtos
                 </div>
-                <div className="card-body">
+                <div className="card-body table-responsive">
                     <table className="table table-hover table-striped">
                         <thead>
                             <tr className="thead-dark">
