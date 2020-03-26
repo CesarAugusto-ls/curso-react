@@ -56,6 +56,17 @@ class CadastroProduto extends React.Component {
         this.setState(stateInicial)
     }
 
+    componentDidMount() {
+        const sku = this.props.match.params.sku
+        if (sku) {
+            const resultado = this.service.consultarProdutos().filter(produto => produto.sku === sku)
+            if (resultado.length === 1) {
+                const produtoEncontrado = resultado[0]
+                this.setState({ ...produtoEncontrado })
+            }
+        }
+    }
+
     render() {
         return (
             <div className="card">

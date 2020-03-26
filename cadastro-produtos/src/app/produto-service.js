@@ -1,6 +1,6 @@
 const PRODUTOS = '_PRODUTOS'
 
-export function ErroValidacao(erros){
+export function ErroValidacao(erros) {
     this.erros = erros;
 }
 
@@ -9,22 +9,32 @@ export default class ProdutoService {
     validar = (produto) => {
         const erros = []
 
-        if(!produto.nome){
+        if (!produto.nome) {
             erros.push('O campo Nome é obrigatorio')
         }
-        if(!produto.sku){
+        if (!produto.sku) {
             erros.push('O campo SKU é obrigatorio')
         }
-        if(!produto.preco || produto.preco <= 0){
+        if (!produto.preco || produto.preco <= 0) {
             erros.push('O campo Preço deve ter um valor maior que 0')
         }
-        if(!produto.fornecedor){
+        if (!produto.fornecedor) {
             erros.push('O campo Fornecedor é obrigatorio')
         }
 
-        if(erros.length > 0){
+        if (erros.length > 0) {
             throw new ErroValidacao(erros)
         }
+    }
+
+    obterIndex = (sku) => {
+        let index = null;
+        this.consultarProdutos().forEach((produto, i) => {
+            if(produto.sku === sku){
+                index = i
+            }
+        })
+        return index
     }
 
     salvar = (produto) => {
@@ -37,7 +47,12 @@ export default class ProdutoService {
             produtos = JSON.parse(produtos)
         }
 
-        produtos.push(produto);
+        const index = this.obterIndex(produto.sku)
+        if(index === null){
+            produtos.push(produto);
+        }else{
+            produtos[index] = produto
+        }
 
         localStorage.setItem(PRODUTOS, JSON.stringify(produtos))
     }
@@ -46,5 +61,5 @@ export default class ProdutoService {
         const produtos = localStorage.getItem(PRODUTOS)
         return JSON.parse(produtos)
     }
-    
+
 }
