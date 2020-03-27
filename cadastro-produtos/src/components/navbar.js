@@ -22,7 +22,7 @@ function NavBar() {
                         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/cadastroprodutos/">Cadastro</Link>
+                        <Link className="nav-link" to="/cadastroprodutos">Cadastro</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/consultaprodutos">Consulta</Link>

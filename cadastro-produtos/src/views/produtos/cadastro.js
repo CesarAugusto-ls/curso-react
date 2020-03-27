@@ -66,9 +66,11 @@ class CadastroProduto extends React.Component {
                 const produtoEncontrado = resultado[0]
                 this.setState({ ...produtoEncontrado, atualizando: true })
             }
+        }else{
+            this.setState({ stateInicial })
         }
     }
-    
+
     render() {
         return (
             <div className="card">
