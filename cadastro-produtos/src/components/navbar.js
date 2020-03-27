@@ -19,13 +19,13 @@ function NavBar() {
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/" replace>Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/cadastroprodutos">Cadastro</Link>
+                        <Link className="nav-link" to="/cadastroprodutos" replace>Cadastro</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/consultaprodutos">Consulta</Link>
+                        <Link className="nav-link" to="/consultaprodutos" replace>Consulta</Link>
                     </li>
                 </ul>
             </div>

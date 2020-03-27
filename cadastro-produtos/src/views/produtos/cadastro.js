@@ -58,7 +58,6 @@ class CadastroProduto extends React.Component {
     }
 
     componentDidMount() {
-        
         const sku = this.props.match.params.sku
         if (sku) {
             const resultado = this.service.consultarProdutos().filter(produto => produto.sku === sku)
