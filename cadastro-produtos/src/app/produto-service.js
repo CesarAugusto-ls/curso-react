@@ -30,7 +30,7 @@ export default class ProdutoService {
     obterIndex = (sku) => {
         let index = null;
         this.consultarProdutos().forEach((produto, i) => {
-            if(produto.sku === sku){
+            if (produto.sku === sku) {
                 index = i
             }
         })
@@ -48,9 +48,9 @@ export default class ProdutoService {
         }
 
         const index = this.obterIndex(produto.sku)
-        if(index === null){
+        if (index === null) {
             produtos.push(produto);
-        }else{
+        } else {
             produtos[index] = produto
         }
 
@@ -59,7 +59,20 @@ export default class ProdutoService {
 
     consultarProdutos = () => {
         const produtos = localStorage.getItem(PRODUTOS)
+        if (!produtos) {
+            return []
+        }
         return JSON.parse(produtos)
+    }
+
+    deletarProduto = (sku) => {
+        const index = this.obterIndex(sku)
+        if(index !== null){
+            const produtos = this.consultarProdutos()
+            produtos.splice(index, 1)
+            localStorage.setItem(PRODUTOS, JSON.stringify(produtos))
+            return produtos
+        }
     }
 
 }
