@@ -1,5 +1,6 @@
 import React from 'react'
 import ProdutoService from '../../app/produto-service'
+import Card from '../../components/card'
 
 const stateInicial = {
     nome: '',
@@ -70,118 +71,110 @@ class CadastroProduto extends React.Component {
 
     render() {
         return (
-            <div className="card">
-                <div className="card-header">
+            <Card header={(this.state.atualizando ? 'Atualização ' : 'Cadastro ') + "de produtos"}>
+
+                <form id="frmProduto" onSubmit={this.onSubmit}>
+
                     {
-                        this.state.atualizando ? 'Atualização ' : 'Cadastro '
-                    }
-                    de produtos
-                </div>
-                <div className="card-body">
-
-                    <form id="frmProduto" onSubmit={this.onSubmit}>
-
-                        {
-                            this.state.sucesso &&
-                            <div className="alert alert-dismissible alert-success">
-                                <button type="button" className="close" data-dismiss="alert">&times;</button>
-                                <strong>Sucesso! </strong>
+                        this.state.sucesso &&
+                        <div className="alert alert-dismissible alert-success">
+                            <button type="button" className="close" data-dismiss="alert">&times;</button>
+                            <strong>Sucesso! </strong>
                                 Produto {this.state.atualizando ? 'Atualizado ' : 'cadastrado '} com sucesso
                             </div>
-                        }
+                    }
 
-                        {
-                            this.state.erros.length > 0 &&
+                    {
+                        this.state.erros.length > 0 &&
 
-                            this.state.erros.map(msg => {
-                                return (
-                                    <div className="alert alert-dismissible alert-danger">
-                                        <button type="button" className="close" data-dismiss="alert">&times;</button>
-                                        <strong>Erro!</strong> {msg}
-                                    </div>
-                                )
-                            })
-                        }
-
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <label>Nome *</label>
-                                    <input
-                                        type="text"
-                                        name="nome"
-                                        value={this.state.nome}
-                                        onChange={this.onChange}
-                                        className="form-control" />
+                        this.state.erros.map(msg => {
+                            return (
+                                <div className="alert alert-dismissible alert-danger">
+                                    <button type="button" className="close" data-dismiss="alert">&times;</button>
+                                    <strong>Erro!</strong> {msg}
                                 </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <label>SKU *</label>
-                                    <input
-                                        type="text"
-                                        name="sku"
-                                        disabled={this.state.atualizando}
-                                        value={this.state.sku}
-                                        onChange={this.onChange}
-                                        className="form-control" />
-                                </div>
+                            )
+                        })
+                    }
+
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="form-group">
+                                <label>Nome *</label>
+                                <input
+                                    type="text"
+                                    name="nome"
+                                    value={this.state.nome}
+                                    onChange={this.onChange}
+                                    className="form-control" />
                             </div>
                         </div>
-
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="form-group">
-                                    <label>Descrição </label>
-                                    <textarea
-                                        name="descricao"
-                                        value={this.state.descricao}
-                                        onChange={this.onChange}
-                                        className="form-control" />
-                                </div>
+                        <div className="col-md-6">
+                            <div className="form-group">
+                                <label>SKU *</label>
+                                <input
+                                    type="text"
+                                    name="sku"
+                                    disabled={this.state.atualizando}
+                                    value={this.state.sku}
+                                    onChange={this.onChange}
+                                    className="form-control" />
                             </div>
                         </div>
+                    </div>
 
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <label>Preço *</label>
-                                    <input
-                                        type="text"
-                                        name="preco"
-                                        value={this.state.preco}
-                                        onChange={this.onChange}
-                                        className="form-control" />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <label>Fornecedor *</label>
-                                    <input
-                                        type="text"
-                                        name="fornecedor"
-                                        value={this.state.fornecedor}
-                                        onChange={this.onChange}
-                                        className="form-control" />
-                                </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <label>Descrição </label>
+                                <textarea
+                                    name="descricao"
+                                    value={this.state.descricao}
+                                    onChange={this.onChange}
+                                    className="form-control" />
                             </div>
                         </div>
+                    </div>
 
-
-                        <div className="row">
-                            <div className="col-md-1">
-                                <button type="submit" className="btn btn-success" >
-                                    {this.state.atualizando ? 'Atualizar' : 'Cadastrar'}
-                                </button>
-                            </div>
-                            <div className="col-md-1">
-                                <button onClick={this.limparCampos} className="btn btn-primary" >Limpar</button>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="form-group">
+                                <label>Preço *</label>
+                                <input
+                                    type="text"
+                                    name="preco"
+                                    value={this.state.preco}
+                                    onChange={this.onChange}
+                                    className="form-control" />
                             </div>
                         </div>
+                        <div className="col-md-6">
+                            <div className="form-group">
+                                <label>Fornecedor *</label>
+                                <input
+                                    type="text"
+                                    name="fornecedor"
+                                    value={this.state.fornecedor}
+                                    onChange={this.onChange}
+                                    className="form-control" />
+                            </div>
+                        </div>
+                    </div>
 
-                    </form>
-                </div>
-            </div>
+
+                    <div className="row">
+                        <div className="col-md-1">
+                            <button type="submit" className="btn btn-success" >
+                                {this.state.atualizando ? 'Atualizar' : 'Cadastrar'}
+                            </button>
+                        </div>
+                        <div className="col-md-1">
+                            <button onClick={this.limparCampos} className="btn btn-primary" >Limpar</button>
+                        </div>
+                    </div>
+
+                </form>
+            </Card>
         )
     }
 }
