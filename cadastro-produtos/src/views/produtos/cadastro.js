@@ -54,7 +54,9 @@ class CadastroProduto extends React.Component {
 
     limparCampos = () => {
         const msg = this.state.atualizando;
-        this.props.history.push('/cadastroprodutos');
+        if(this.state.atualizando){
+            this.props.history.push('/cadastroprodutos');
+        }
         this.setState(stateInicial)
         this.setState({msgAtualizando: msg})
     }
