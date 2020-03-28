@@ -89,7 +89,7 @@ class CadastroProduto extends React.Component {
 
                         this.state.erros.map(msg => {
                             return (
-                                <div className="alert alert-dismissible alert-danger">
+                                <div key={"msg"+msg.length} className="alert alert-dismissible alert-danger">
                                     <button type="button" className="close" data-dismiss="alert">&times;</button>
                                     <strong>Erro!</strong> {msg}
                                 </div>
@@ -169,7 +169,7 @@ class CadastroProduto extends React.Component {
                             </button>
                         </div>
                         <div className="col-md-1">
-                            <button onClick={this.limparCampos} className="btn btn-primary" >Limpar</button>
+                            <button type="reset" onClick={this.limparCampos} className="btn btn-primary" >Limpar</button>
                         </div>
                     </div>
 
