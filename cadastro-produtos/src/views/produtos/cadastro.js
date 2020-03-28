@@ -10,7 +10,8 @@ const stateInicial = {
     fornecedor: '',
     sucesso: false,
     erros: [],
-    atualizando: false
+    atualizando: false,
+    msgAtualizando: false
 }
 
 class CadastroProduto extends React.Component {
@@ -45,7 +46,6 @@ class CadastroProduto extends React.Component {
             this.service.salvar(produto)
             this.limparCampos()
             this.setState({ sucesso: true })
-            this.props.history.push('/cadastroprodutos');
         } catch (erro) {
             const erros = erro.erros
             this.setState({ erros: erros })
@@ -53,7 +53,10 @@ class CadastroProduto extends React.Component {
     }
 
     limparCampos = () => {
+        const msg = this.state.atualizando;
+        this.props.history.push('/cadastroprodutos');
         this.setState(stateInicial)
+        this.setState({msgAtualizando: msg})
     }
 
     componentDidMount() {
@@ -80,7 +83,7 @@ class CadastroProduto extends React.Component {
                         <div className="alert alert-dismissible alert-success">
                             <button type="button" className="close" data-dismiss="alert">&times;</button>
                             <strong>Sucesso! </strong>
-                                Produto {this.state.atualizando ? 'Atualizado ' : 'cadastrado '} com sucesso
+                                Produto {this.state.msgAtualizando ? 'Atualizado ' : 'cadastrado '} com sucesso
                             </div>
                     }
 
