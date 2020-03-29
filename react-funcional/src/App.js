@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+
+  const [numero, setNumero] = useState()
+  const [segundoNumero, setSegundoNumero] = useState()
+  const [resultado, setRsultado] = useState()
+
+  // const [state, setState] = useState({
+  //   nuemro: 0,
+  //   segundoNumero: 0,
+  //   resultado: 0
+  // })
+
+  const somar = () => {
+    const numeroInt = parseInt(numero)
+    const segundoNumeroInt = parseInt(segundoNumero)
+
+    setRsultado(numeroInt + segundoNumeroInt)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Numero 1:<br />
+      <input type="text" value={numero} onChange={e => setNumero(e.target.value)} /><br/>
+      Numero 2:<br />
+      <input type="text" value={segundoNumero} onChange={e => setSegundoNumero(e.target.value)} /><br/>
+      <button onClick={somar}>somar</button><br />
+      Resultado:<br />
+      <input type="text" value={resultado}/><br/>
     </div>
   );
 }
